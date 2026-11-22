@@ -1,0 +1,24 @@
+<canvas id="webgl-background" aria-hidden="true"></canvas>
+
+<script>
+  import { initScene } from './scene';
+
+  const canvas = document.getElementById('webgl-background') as HTMLCanvasElement | null;
+  let destroy: (() => void) | null = null;
+
+  async function start() {
+    if (!canvas) return;
+    destroy = await initScene(canvas);
+  }
+
+  // Delay init slightly to let layout settle
+  if (document.readyState === 'complete') {
+    start();
+  } else {
+    window.addEventListener('load', start, { once: true });
+  }
+
+  document.addEventListener('astro:before-swap', () => {
+    destroy?.();
+  });
+</script>

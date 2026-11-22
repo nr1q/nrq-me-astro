@@ -1,0 +1,90 @@
+---
+interface Project {
+  title: string;
+  description: string;
+  credit: string;
+  image?: string;
+}
+
+const projects: Project[] = [
+  {
+    title: 'Richmond Studio',
+    description:
+      'This is the first site developed purely in Next.js (SSG). Is an informative landing page for distinct profiles, such as teachers and students.',
+    credit: 'Designed by Gabriel Tinoco at Cherry Bomb',
+    image: '/images/richmond-studio.jpg',
+  },
+  {
+    title: 'Vives Consulting',
+    description:
+      'This site also has plenty of animations depending on scroll positions and is GSAP powered. Navigation uses page transitions with Barba.js plugin.',
+    credit: 'Designed by Gabriel Tinoco at Cherry Bomb',
+    image: '/images/vives-consulting.jpg',
+  },
+  {
+    title: 'Cherry Bomb Creative Co.',
+    description:
+      'Each version of the website designed by Gabo was very exiting to work with, but this one has the best UX with scroll based animations (and other interactions) using GSAP.',
+    credit: 'Designed by Gabriel Tinoco at Cherry Bomb',
+    image: '/images/cherry-bomb-creative-co.jpg',
+  },
+  {
+    title: 'Diversified Industries',
+    description:
+      'Custom theme for Diversified Industries site redesign leveraging layout to grids and flexboxes with few elements animated using GSAP.',
+    credit: 'Designed by Fernando Guerrero at Cherry Bomb',
+    image: '/images/diversified-industries.jpg',
+  },
+  {
+    title: 'The Wall Patriotismo',
+    description:
+      'Reservation/booking system for one of the tallest indoor rock climbing walls in Latin America, embedded in a landing page.',
+    credit: 'Designed by Gabriel Tinoco at Cherry Bomb',
+    image: '/images/the-wall-patriotismo.jpg',
+  },
+  {
+    title: 'Richmond ELT',
+    description:
+      'Custom theme for Richmond ELT\'s website to improve the re-design supported by CSS Animations.',
+    credit: 'Designed by Gabriel Tinoco at Cherry Bomb',
+    image: '/images/richmond-elt.jpg',
+  },
+  {
+    title: 'Floormuffler',
+    description:
+      'Custom theme for Floormuffler (subsidiary of Diversified Industries) site redesign enhancing user experience by giving slight CSS Transitions.',
+    credit: 'Designed by Fernando Guerrero at Cherry Bomb',
+    image: '/images/floormuffler.jpg',
+  },
+];
+---
+
+<section class="container mx-auto px-6 py-16 md:py-24 relative z-10">
+  <h2 class="font-display text-sm uppercase tracking-widest text-muted mb-12 md:mb-16">
+    Recent work
+  </h2>
+
+  <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
+    {
+      projects.map((project) => (
+        <article class="group">
+          {project.image && (
+            <div class="aspect-[16/10] rounded-xl overflow-hidden bg-card mb-6">
+              <img
+                src={project.image}
+                alt={`Screenshot of ${project.title}'s website`}
+                width={1200}
+                height={750}
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+              />
+            </div>
+          )}
+          <h3 class="font-display text-2xl md:text-3xl text-foreground mb-3">{project.title}</h3>
+          <p class="text-muted leading-relaxed mb-3" set:html={project.description.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')} />
+          <p class="text-sm text-muted italic">{project.credit}</p>
+        </article>
+      ))
+    }
+  </div>
+</section>

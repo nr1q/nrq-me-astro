@@ -1,0 +1,89 @@
+---
+interface Skill {
+  title: string;
+  description: string;
+}
+
+const skills: Skill[] = [
+  {
+    title: 'Headless CMS integration',
+    description:
+      'Newest sites including this one are Next.js projects retrieving page data through REST from CMS in headless mode such as Payload CMS or even WordPress.',
+  },
+  {
+    title: 'Javascript tech stack',
+    description:
+      'Most recent sites were developed using state-of-the-art technologies such as Next.js, Typescript, React, Tailwind, BEM, CSS Modules between others.',
+  },
+  {
+    title: 'Figma to code',
+    description:
+      'Several years ago I\'ve used to transform .psd or .ai into HTML, nowadays I can turn your figma-based design into effectively working web solutions.',
+  },
+  {
+    title: 'Wordpress Gutenberg blocks',
+    description:
+      'Recent sites are based on the new editor to allow final clients create block based layouts with the ease of a page builder.',
+  },
+  {
+    title: 'Wordpress theme starter',
+    description:
+      'Most of the sites are developed using Flashpowder a custom theme starter heavily inspired in Tonik for backend and Locomotive as frontend boilerplate.',
+  },
+  {
+    title: 'Server admin',
+    description:
+      'At the beginning started with XAMPP, then used a custom Vagrant script and now I\'m currently moving to the MERN stack.',
+  },
+];
+---
+
+<section class="container mx-auto px-6 py-16 md:py-24 relative z-10">
+  <h2 class="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mb-12 md:mb-16">
+    Experience
+  </h2>
+
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+    {
+      skills.map((skill) => (
+        <div class="p-6 rounded-xl border border-border bg-card/50 hover:bg-card transition-colors">
+          <h3 class="font-display text-xl text-foreground mb-3">{skill.title}</h3>
+          <p class="text-sm md:text-base text-muted leading-relaxed">{skill.description}</p>
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="mt-16 md:mt-24 max-w-2xl">
+    <p class="text-muted text-sm md:text-base leading-relaxed mb-4">
+      <a
+        href="https://bitbucket.org/cherrybomb-cc/flashpowder/src/development/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-foreground underline underline-offset-4 hover:text-muted transition-colors"
+        >Flashpowder</a
+      >,{' '}
+      <a
+        href="https://github.com/tonik/theme"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-foreground underline underline-offset-4 hover:text-muted transition-colors"
+        >Tonik</a
+      >,{' '}
+      <a
+        href="https://github.com/locomotivemtl/locomotive-boilerplate"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-foreground underline underline-offset-4 hover:text-muted transition-colors"
+        >Locomotive</a
+      >, and{' '}
+      <a
+        href="https://github.com/nr1q/Vagrantfile"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-foreground underline underline-offset-4 hover:text-muted transition-colors"
+        >custom Vagrant script</a
+      >.
+    </p>
+  </div>
+</section>

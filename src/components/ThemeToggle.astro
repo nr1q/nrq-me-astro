@@ -1,0 +1,43 @@
+---
+/**
+ * ThemeToggle component
+ *
+ * This component is kept for future use but is not currently imported anywhere.
+ * The site is dark-only by design. To re-enable theme switching:
+ * 1. Import and render this component in Footer.astro
+ * 2. Remove the hardcoded `class="dark"` from Layout.astro
+ * 3. Add light-mode CSS variables to src/styles/global.css
+ */
+---
+
+<div class="theme-toggle">
+  <button
+    type="button"
+    class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-card text-sm text-foreground hover:bg-card-hover transition-colors"
+    aria-label="Toggle theme"
+    data-theme-toggle
+  >
+    <span>Theme</span>
+  </button>
+</div>
+
+<script>
+  const STORAGE_KEY = 'nrq-theme';
+  const button = document.querySelector('[data-theme-toggle]');
+
+  function getStoredTheme(): 'light' | 'dark' {
+    if (typeof localStorage === 'undefined') return 'dark';
+    return (localStorage.getItem(STORAGE_KEY) as 'light' | 'dark') || 'dark';
+  }
+
+  function setTheme(theme: 'light' | 'dark') {
+    document.documentElement.classList.remove('light', 'dark');
+    document.documentElement.classList.add(theme);
+    localStorage.setItem(STORAGE_KEY, theme);
+  }
+
+  button?.addEventListener('click', () => {
+    const current = getStoredTheme();
+    setTheme(current === 'dark' ? 'light' : 'dark');
+  });
+</script>
