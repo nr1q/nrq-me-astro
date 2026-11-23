@@ -68,8 +68,8 @@ export async function initScene(canvas: HTMLCanvasElement): Promise<() => void> 
 
     if (!prefersReducedMotion) {
       material.uniforms.uTime.value = elapsed;
-      material.uniforms.uScrollProgress.value += (scrollProgress - material.uniforms.uScrollProgress.value) * 0.08;
-      material.uniforms.uVelocity.value += (scrollVelocity - material.uniforms.uVelocity.value) * 0.001;
+      material.uniforms.uScrollProgress.value += (scrollProgress - material.uniforms.uScrollProgress.value) * 0.01;
+      material.uniforms.uVelocity.value += (scrollVelocity - material.uniforms.uVelocity.value) * 0.07;
     }
 
     renderer.render(scene, camera);
