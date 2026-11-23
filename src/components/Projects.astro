@@ -8,6 +8,13 @@ interface Project {
 
 const projects: Project[] = [
   {
+    title: 'Placement Tests designed by Richmond',
+    description:
+    'This is a platform that administers CEFR-graded placement tests to students at partner schools across multiple countries. Project migrated from legacy code to modern tech stack (Laravel, React, Typescript, Postgre, Redis) for scalability and optimization.',
+    credit: '',
+    image: '',
+  },
+  {
     title: 'Richmond Studio',
     description:
       'This is the first site developed purely in Next.js (SSG). Is an informative landing page for distinct profiles, such as teachers and students.',
@@ -68,7 +75,7 @@ const projects: Project[] = [
     {
       projects.map((project) => (
         <article class="group">
-          {project.image && (
+          {project.image ? (
             <div class="aspect-[16/10] rounded-xl overflow-hidden bg-card mb-6">
               <img
                 src={project.image}
@@ -79,7 +86,11 @@ const projects: Project[] = [
                 loading="lazy"
               />
             </div>
-          )}
+            ) : (
+            <div class="flex items-center justify-center aspect-[16/10] rounded-xl overflow-hidden bg-card mb-6">
+              No screenshot yet
+            </div>
+            )}
           <h3 class="font-display text-2xl md:text-3xl text-foreground mb-3">{project.title}</h3>
           <p class="text-muted leading-relaxed mb-3" set:html={project.description.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')} />
           <p class="text-sm text-muted italic">{project.credit}</p>
