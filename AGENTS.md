@@ -1,6 +1,6 @@
 ## Development
 
-This project is built with **Astro**, **Tailwind CSS v4**, **Lenis**, and **Three.js**.
+This project is built with **Astro**, **Tailwind CSS v4**, **Lenis**, **Three.js**, **GSAP**, and **SplitType**.
 
 Install dependencies:
 

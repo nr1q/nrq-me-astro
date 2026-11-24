@@ -61,6 +61,7 @@ export async function initScene(canvas: HTMLCanvasElement): Promise<() => void> 
 
   let animationId: number;
   let startTime = performance.now();
+  let didEmitReady = false;
 
   function animate() {
     animationId = requestAnimationFrame(animate);
@@ -74,6 +75,12 @@ export async function initScene(canvas: HTMLCanvasElement): Promise<() => void> 
     }
 
     renderer.render(scene, camera);
+
+    if (!didEmitReady) {
+      didEmitReady = true;
+      (window as any).__heroCanvasReady = true;
+      window.dispatchEvent(new CustomEvent('hero:canvas-ready'));
+    }
   }
 
   animate();
