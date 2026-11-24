@@ -5,11 +5,11 @@
 
   void main() {
     // vec3 colorA = vec3(0.039, 0.039, 0.039); // #0a0a0a
-    vec3 colorA = clamp(vec3((sin(uTime * 1.5) * 0.5 + 0.5)), 0.2, 0.8);
+    vec3 colorA = clamp(vec3((sin(uTime * 1.5) * 0.5 + 0.5)), 0.0, 0.5);
     // vec3 colorB = vec3(0.075, 0.075, 0.075); // #131313
-    vec3 colorB = clamp(vec3((sin(uTime * -0.5 + 3.141594 * 0.5) * 0.5 + 0.5)), 0.3, 0.9);
+    vec3 colorB = clamp(vec3((sin(uTime * -0.5 + 3.141594 * 0.5) * 0.5 + 0.5)), 0.0, 0.6);
     // vec3 colorC = vec3(0.122, 0.122, 0.122); // #1f1f1f
-    vec3 colorC = clamp(vec3((sin(uTime * 1.5 + 3.141594) * 0.5 + 0.5)), 0.0, 0.6);
+    vec3 colorC = clamp(vec3((sin(uTime * 1.5 + 3.141594) * 0.5 + 0.5)), 0.0, 0.4);
 
     float gradient = vUv.y + vElevation * 0.5 + uScrollProgress * 0.15;
     vec3 color = mix(colorA, colorB, smoothstep(0.0, 0.6, gradient));

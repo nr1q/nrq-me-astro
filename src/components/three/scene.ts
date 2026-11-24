@@ -19,9 +19,9 @@ export async function initScene(canvas: HTMLCanvasElement): Promise<() => void> 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(75, ratio, 0.1, 100);
   camera.position.y = 0;
-  camera.position.z = window.matchMedia('(width < 55em)').matches ? 2.9 : 1.5;
+  camera.position.z = window.matchMedia('(width < 55em)').matches ? 1.75 : 1.5;
 
-  const geometry = new THREE.PlaneGeometry(4 * ratio, 4 / (ratio), 64, 64);
+  const geometry = new THREE.PlaneGeometry(4 * ratio, 10 / (ratio), 64, 64);
   const material = new THREE.ShaderMaterial({
     vertexShader,
     fragmentShader,
