@@ -9,14 +9,15 @@
 
     vec3 pos = position;
 
-    float wave1 = sin(pos.x * 3.5 + uTime * 1.75 + uScrollProgress * 4.0) * 0.12;
-    float wave2 = sin(pos.y * 2.2 - uTime * 1.15 + uScrollProgress * 3.0) * 0.10;
-    float wave3 = sin((pos.x + pos.y) * 1.8 + uTime * 3.1) * 0.08;
+    float wave1 = sin(pos.x * 3.5 * sin(uTime * 0.1) + uTime * 0.075 + uScrollProgress * 4.0) * 0.12;
+    float wave2 = sin(pos.y * 2.2 - uTime * 0.015 + uScrollProgress * 2.0) * 0.12;
+    float wave3 = sin((pos.x + pos.y) * 1.8 + uTime * 1.1) * 0.08;
 
     float elevation = wave1 + wave2 + wave3;
     elevation -= uVelocity * 0.09;
 
-    pos.z = abs(pos.z - elevation) * -0.2;
+    // pos.z = abs(pos.z - elevation) * -0.2;
+    pos.z = smoothstep(pos.z - elevation, 0.01, 0.05);
     vElevation = elevation;
 
     gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
