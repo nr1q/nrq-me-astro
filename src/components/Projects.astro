@@ -92,7 +92,7 @@ const projects: Project[] = [
       projects.map((project) => (
         <article class="group">
           {project.image ? (
-            <div class="aspect-[16/10] rounded-xl overflow-hidden bg-card mb-6">
+            <div class="aspect-[16/10] overflow-hidden bg-card mb-6">
               <img
                 src={project.image}
                 alt={`Screenshot of ${project.title}'s website`}
@@ -103,7 +103,7 @@ const projects: Project[] = [
               />
             </div>
             ) : (
-            <div class="flex items-center justify-center aspect-[16/10] rounded-xl overflow-hidden bg-card mb-6">
+            <div class="flex items-center justify-center aspect-[16/10] overflow-hidden bg-card mb-6">
               No screenshot yet
             </div>
             )}
